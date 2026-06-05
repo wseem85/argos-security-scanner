@@ -1,0 +1,23 @@
+# Dependencies
+**/node_modules/
+node_modules/
+
+# Production builds / compiled output
+**/dist/
+dist/
+**/.next/
+**/.nuxt/
+
+# Environment variables
+**/.env
+.env
+.env.local
+.env.production
+
+# Explicitly allow .env.example files
+!**/.env.example
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db

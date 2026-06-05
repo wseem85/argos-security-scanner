@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // ✅ Modern Node.js target
+    "module": "commonjs",
+    "lib": ["ES2022"], // ✅ Include modern type definitions
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
