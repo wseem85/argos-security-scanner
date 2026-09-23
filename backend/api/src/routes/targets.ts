@@ -1,0 +1,12 @@
+import type { Request, Response } from 'express';
+
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (_req: Request, res: Response) => {
+  res.status(200).json({
+    message: 'Targets route is not implemented yet',
+  });
+});
+
+module.exports = router;

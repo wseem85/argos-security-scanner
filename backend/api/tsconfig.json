@@ -7,9 +7,8 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",
     // "target": "esnext",
-    "types": [],
+    "types": ["node"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -33,10 +32,13 @@
     // "noPropertyAccessFromIndexSignature": true,
 
     // Recommended Options
-    "target": "ES2022", // ✅ Modern Node.js target
-    "lib": ["ES2022"], // ✅ Include modern type definitions
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["ES2022"], //
     "strict": true,
     "jsx": "react-jsx",
+    "esModuleInterop": true,
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
