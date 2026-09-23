@@ -1,5 +1,5 @@
 const { pool } = require('../db');
-
+const { createAppError } = require('../types/domain');
 class ScanRepository {
   async getAllScans() {
     const result = await pool.query(`
@@ -24,12 +24,7 @@ class ScanRepository {
     );
 
     if (scanResult.rows.length === 0) {
-      const error = new Error('Scan not found') as Error & {
-        statusCode?: number;
-      };
-
-      error.statusCode = 404;
-      throw error;
+      throw createAppError('Scan not found', 404);
     }
 
     const toolsResult = await pool.query(

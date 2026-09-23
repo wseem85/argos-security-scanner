@@ -40,7 +40,9 @@ export type ScanRow = {
   finished_at: string | null;
   error_message: string | null;
 };
-
+export type ScanWithTarget = ScanRow & {
+  target_url: string;
+};
 export type ScanToolRow = {
   id: string;
   scan_id: string;
@@ -70,7 +72,22 @@ export type VulnerabilityRow = {
 export type AppError = Error & {
   statusCode?: number;
 };
+export type ScanDetails = {
+  scan: ScanWithTarget;
+  tools: ScanToolRow[];
+  vulnerabilities: VulnerabilityRow[];
+};
+export type ScanStatsRow = {
+  severity: Severity;
+  count: string;
+};
 
+export type ScanRepositoryPort = {
+  getAllScans(): Promise<ScanWithTarget[]>;
+  getScanById(id: string): Promise<ScanDetails>;
+  createScan(targetId: string, scanType: ScanType): Promise<ScanRow>;
+  getScanStats(id: string): Promise<ScanStatsRow[]>;
+};
 function createAppError(message: string, statusCode: number): AppError {
   const error = new Error(message) as AppError;
   error.statusCode = statusCode;
