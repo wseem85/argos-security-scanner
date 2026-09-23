@@ -1,5 +1,5 @@
-const { pool } = require('../db');
-const { createAppError } = require('../types/domain');
+import { pool } from '../db.js';
+import { createAppError } from '../types/domain.js';
 class ScanRepository {
   async getAllScans() {
     const result = await pool.query(`
@@ -92,6 +92,4 @@ class ScanRepository {
 
 const scanRepository = new ScanRepository();
 
-module.exports = {
-  scanRepository,
-};
+export { scanRepository };

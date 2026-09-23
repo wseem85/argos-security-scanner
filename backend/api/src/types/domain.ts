@@ -88,11 +88,8 @@ export type ScanRepositoryPort = {
   createScan(targetId: string, scanType: ScanType): Promise<ScanRow>;
   getScanStats(id: string): Promise<ScanStatsRow[]>;
 };
-function createAppError(message: string, statusCode: number): AppError {
+export function createAppError(message: string, statusCode: number): AppError {
   const error = new Error(message) as AppError;
   error.statusCode = statusCode;
   return error;
 }
-module.exports = {
-  createAppError,
-};

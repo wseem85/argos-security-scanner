@@ -4,9 +4,9 @@ import type {
   ScanRepositoryPort,
   ScanDetails,
   ScanStatsRow,
-} from '../types/domain';
-const { createAppError } = require('../types/domain');
-const { scanRepository } = require('../repositories/scan-repository');
+} from '../types/domain.js';
+import { createAppError } from '../types/domain.js';
+import { scanRepository } from '../repositories/scan-repository.js';
 
 class ScanService {
   private repositery: ScanRepositoryPort;
@@ -22,7 +22,7 @@ class ScanService {
 
   async createScan(targetId: string, scanType: ScanType): Promise<ScanRow> {
     if (!targetId) {
-      throw createAppError('target is Required', 400);
+      throw createAppError('targetId is required', 400);
     }
     if (!['passive', 'active', 'full'].includes(scanType)) {
       throw createAppError('Invalid Scan Type', 400);
@@ -36,4 +36,4 @@ class ScanService {
 }
 
 const scanService = new ScanService(scanRepository);
-module.exports = { scanService, ScanService };
+export { scanService, ScanService };

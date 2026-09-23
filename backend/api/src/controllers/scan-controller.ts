@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
-const { scanService } = require('../services/scan-service');
+import { scanService } from '../services/scan-service.js';
+import { createAppError } from '../types/domain.js';
 async function getAllScans(req: Request, res: Response, next: NextFunction) {
   try {
     const scans = await scanService.getAllScans();
@@ -12,6 +13,9 @@ async function getAllScans(req: Request, res: Response, next: NextFunction) {
 async function getScanById(req: Request, res: Response, next: NextFunction) {
   try {
     const { id } = req.params;
+    if (!id || Array.isArray(id)) {
+      throw createAppError('scan id is required', 400);
+    }
     const scan = await scanService.getScanById(id);
     res.status(200).json(scan);
   } catch (error) {
@@ -32,6 +36,9 @@ async function createScan(req: Request, res: Response, next: NextFunction) {
 async function getScanStats(req: Request, res: Response, next: NextFunction) {
   try {
     const { id } = req.params;
+    if (!id || Array.isArray(id)) {
+      throw createAppError('scan id is required', 400);
+    }
     const scan = await scanService.getScanStats(id);
     res.status(200).json(scan);
   } catch (error) {
@@ -39,9 +46,4 @@ async function getScanStats(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-module.exports = {
-  getAllScans,
-  getScanById,
-  createScan,
-  getScanStats,
-};
+export { getAllScans, getScanById, createScan, getScanStats };

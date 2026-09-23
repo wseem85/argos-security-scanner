@@ -1,20 +1,21 @@
-const { Pool } = require('pg');
-const dotenv = require('dotenv');
-const path = require('path');
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config({
   path: path.resolve(__dirname, '../../worker/.env'),
 });
 
-const pool = new Pool({
+export const pool = new Pool({
   host: '127.0.0.1',
   port: 5432,
   user: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
 });
-
-module.exports = { pool };
 
 // npm install express cors pg dotenv
 // npm install --save-dev @types/express @types/cors @types/pg @types/node typescript ts-node

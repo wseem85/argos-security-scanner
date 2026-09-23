@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "start": "npx ts-node src/server.ts",
-    "devmon": "nodemon --exec 'npx ts-node' src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.2.4",
@@ -24,6 +25,8 @@
     "@types/node": "^25.9.8",
     "@types/pg": "^8.16.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1"
   }
 }

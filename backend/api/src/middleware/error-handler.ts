@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from 'express';
-import type domain = require('../types/domain');
+import type { AppError } from '../types/domain.js';
 function errorHandler(
-  error: domain.AppError,
+  error: AppError,
   req: Request,
   res: Response,
   next: NextFunction,
@@ -17,6 +17,4 @@ function errorHandler(
   });
 }
 
-module.exports = {
-  errorHandler,
-};
+export { errorHandler };

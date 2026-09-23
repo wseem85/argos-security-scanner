@@ -1,12 +1,12 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 
-const healthRoutes = require('./routes/health');
-const scanRoutes = require('./routes/scans');
-const targetsRoutes = require('./routes/targets');
+import healthRoutes from './routes/health.js';
+import scanRoutes from './routes/scans.js';
+import targetsRoutes from './routes/targets.js';
 
-const { errorHandler } = require('./middleware/error-handler');
-const { notFoundHandler } = require('./middleware/not-found.ts');
+import { errorHandler } from './middleware/error-handler.js';
+import { notFoundHandler } from './middleware/not-found.js';
 
 const app = express();
 
@@ -20,4 +20,4 @@ app.use('/targets', targetsRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-module.exports = app;
+export default app;
